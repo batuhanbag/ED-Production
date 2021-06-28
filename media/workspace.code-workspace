@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "django-blog-app",
+			"path": "django-blog-app"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}

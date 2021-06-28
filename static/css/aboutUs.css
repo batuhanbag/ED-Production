@@ -1,0 +1,267 @@
+pan {
+    user-select: none;
+}
+
+/* navbar  */
+
+.navbar {
+    background-color: #ff914d;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+.dropdown-item:active{
+    background-color: transparent !important;
+   
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none
+}
+
+.nav-elements form {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+}
+
+/* search input */
+
+#searchbtn {
+    font-size: 35px;
+}
+
+.hide input {
+    visibility: hidden;
+    width: 0px;
+    transition: width 0.4s ease-out, visibility 0.3s ease-out;
+}
+
+.show input {
+    visibility: visible;
+    width: 150px;
+}
+
+.show input:focus {
+    outline: none;
+}
+
+/* profile icon dropdown */
+
+.profile span {
+    font-size: 35px;
+}
+
+.profile .dropdown-toggle::after {
+    display: none;
+}
+
+.profile .dropdown-menu[data-bs-popper] {
+    left: -140px !important;
+}
+
+.profile .dropdown-menu {
+    left: -140px !important;
+}
+
+.profile ul li {
+    text-align: right;
+}
+
+/* dropdown menus text color */
+
+.dropdown-menu {
+    background-color: transparent;
+    border: 0cm;
+}
+
+.dropdown-menu li {
+    margin-bottom: 5px;
+    background-color: #ff914d;
+    color: white;
+}
+/* modal sign up */
+.accType {
+    display: flex;
+    justify-content: center;
+}
+/* modal sign in */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form input {
+    width: 100%;
+    margin: 5px auto;
+}
+.forget{
+    display: block;
+    width: 90px;
+    margin-left: auto;
+    font-size: 12px;
+    color: grey;
+    text-decoration: none;
+}
+.forget:hover{
+    color: grey;
+    text-decoration: underline;
+}
+
+/* checkbox custom */
+.check {
+  width: 120px;
+    position: relative;
+    padding-left: 28px;
+    margin-left: 10px;
+   
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+ 
+  }
+  
+
+  .check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  .check p {
+   margin-bottom: 0cm !important;
+  }
+  .checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    background-color: #eee;
+  }
+  
+
+  .check:hover input ~ .checkbox {
+    background-color: #ccc;
+  }
+  
+
+  .check input:checked ~ .checkbox {
+    background-color: #ff914d;
+  }
+  
+
+  .checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+
+  .check input:checked ~ .checkbox:after {
+    display: block;
+  }
+  
+
+  .check .checkbox:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+/* button */
+.right{
+    display: block;
+    width: 90px;
+    margin-left: auto;
+    margin-top: 15px;
+    color: #ff914d;
+    border: 1px solid #ff914d;
+   
+}
+.right:hover{
+    color: white ;
+    background-color: #ff914d;
+}
+.btn:focus{
+  box-shadow: 0 0 0 0px;
+}
+/* modal footer */
+.modal-footer  {
+    justify-content: flex-start;
+}
+.modal-footer a {
+    color: #ff914d !important;
+    cursor: pointer;
+
+}
+.modal-footer a:hover {
+    text-decoration: underline !important;
+
+}
+/* align dropdown to the right for mobile view */
+
+@media screen and (max-width: 992px) {
+    .nav-elements ul li {
+        text-align: right;
+    }
+    .home {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+#kunye
+{
+    margin: 100px auto 80px auto;
+    text-align: center;
+}
+
+section#page
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+#sol
+{
+    margin: 0 0 0 120px;
+    width: 50%;
+}
+
+#sag
+{   
+    margin: 0 0 0 120px;
+    width: 50%;
+}
+
+#alt
+{
+    margin: 40px auto 0 auto;
+    text-align: center;
+}
+

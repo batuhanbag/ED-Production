@@ -1,0 +1,53 @@
+boolen isimlendirmeler
+
+IsOpen
+isActive
+loggedIn   bunun gibi acıklayıcı olmalıdır
+
+
+COnditionlar
+
+
+bunun yerine
+if (isActive == true){
+
+}
+
+bu şekilde olmalıdır
+if (isActive){
+
+}
+
+Kodun içerisinde hiç bir anlam ifade etmeyen sayı,
+ string gibi staticleri de direkt olarak kullanmamamız gerekir.
+ Aşağıda age > 21 koşulu bize yaşın 21’den büyük olması durumunu net bir şekilde anlatıyor ancak
+ 21’in ne ifade ettiği ve neden orada olduğu konusunda bir fikrimiz yok. 
+Değişken çok yerde kullanılıp belli aralıklarla değiştirilmeyecek ise 
+database’de tutmak yerine aşağıdaki şekilde bir tanımlama koda anlam katacaktır.
+
+
+if(age>21) yerine
+
+
+int legalDrinkingAge = 21;
+
+if(age>legalDrinkingAge) şeklinde olmalıdır.
+
+
+------
+bir if blogunda bırden cok kosulu denetlememız gerekıyorsa:
+
+
+DIRTY
+if(employee.Age>55 && empoyee.YearsEmployed>10 & employee.IsRetired==true)  bunun yerine
+
+CLEAN
+bool eligibleForRetirement=  employee.Age > minRetirementAge && 
+                                   employee.YearsEmployed > MinPensionEmployementYears && 
+                                   employee.IsRetired;
+
+if( eligibleForRetirement )
+
+boyle olmalıdır.
+
+

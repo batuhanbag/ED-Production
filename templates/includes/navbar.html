@@ -1,0 +1,78 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+
+<nav class="navbar sticky-top navbar-expand-lg ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index'  %}">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="material-icons" style="cursor: pointer; color: white;">
+                table_rows
+            </span>
+        </button>
+        <div class="collapse navbar-collapse nav-elements" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'journals:journals' %}">Dergiler</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'article:articles' %}">
+                        Makaleler
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'news:news' %}">Haberler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'interviews:interviews' %}">Roportajlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sendArticle' %}">Makale Gönder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">Hakkımızda</a>
+                </li>
+            </ul>
+
+
+            <ul class="navbar-nav">
+                <form class="d-flex" id="seacrh">
+                    {% csrf_token %}
+                    <span class="material-icons" style="cursor: pointer; color: white;" id="searchbtn" role="button">
+                        search
+                    </span>
+                    <div class="hide" id="searchInput">
+                        <input type="text" name="keyword" style="border-radius: 40px;">
+                    </div>
+
+                </form>
+
+                <li class="dropdown profile nav-item">
+                    <span class="material-icons nav-link dropdown-toggle" style="cursor: pointer; color: white;"
+                        id="profile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        account_circle
+                    </span>
+                    <ul class="dropdown-menu" aria-labelledby="profile">
+                        {% if request.user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'article:favourite_list' %}">Favorilerim</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account:account' %}">Bilgilerimi Güncelle</a></li>
+                        <li><a class="dropdown-item" href="{% url 'password_change' %}">Şifremi Değiştir</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account:logout' %}">Çıkış</a></li>
+                        {% else %}
+                        <li><a class="dropdown-item" href="{% url 'account:login' %}">Giriş Yap</a></li>
+
+                        <li><a class="dropdown-item" href="{% url 'account:register' %}">Üye Ol</a></li>
+
+                        {% endif %}
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- navbar end -->

@@ -1,0 +1,56 @@
+/* footer start */
+
+.footer {
+    background-color: rgb(40, 87, 154);
+    padding: 50px;
+ 
+}
+
+.footer input {
+    height: 50px;
+    width: 300px;
+    margin: 30px 50px 30px 0;
+    border-radius: 5px;
+    border: 0;
+    padding: 10px;
+    color: rgb(40, 87, 154);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.footer input:focus {
+    outline: none;
+    padding: 10px;
+}
+.footer input::placeholder {
+    color: rgb(40, 87, 154);
+
+}
+.footer textarea {
+    border-radius: 5px;
+    border: 0;
+    resize: none;
+    width: 100%;
+    margin: 0 50px 30px 0;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(40, 87, 154);
+
+}
+.footer textarea:focus {
+    outline: none;
+    padding: 10px;
+}
+.footer textarea::placeholder {
+    color: rgb(40, 87, 154);
+
+}
+.footer button{
+    background-image: linear-gradient( white  , rgb(222,103,30));
+    display: block;
+    height: 50px;
+    outline: none;
+    border: 0px;
+    margin-left: auto;
+}

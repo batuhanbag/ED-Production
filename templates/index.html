@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+
+<!-- container main start -->
+
+<main class="container">
+    <!-- carousel start  -->
+    <div id="carouselExampleCaptions" class="carousel slide mt-5 " data-bs-ride="carousel">
+        <div class="carousel-indicators d-none d-md-block">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+        </div>
+
+
+        <div class="carousel-inner " style="border-radius: 10px;">
+            {% for ai in carousel_item1 %}
+            <div class="carousel-item active">
+                <img src="{{ai.article_image.url}}" class="d-block w-100" alt="...">
+                <div class="carousel-caption1 d-none d-md-block">
+                    <h5>{{ai.title}}</h5>
+                    <p>{{ai.created_date}} Tarihinde Yayımlandı</p>
+                    <form>
+                        {% csrf_token %}
+                        <input type="submit" name="keyword_category" value="Yapay Zeka">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% for software in carousel_item2 %}
+            <div class="carousel-item">
+                <img src="{{software.article_image.url}}" class="d-block w-100" alt="...">
+                <div class="carousel-caption1 d-none d-md-block">
+                    <h5>{{software.title}}</h5>
+                    <p>{{software.created_date}} Tarihinde Yayımlandı</p>
+                    <form>
+                        {% csrf_token %}
+                        <input type="submit" name="keyword_category" value="Yazılım">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% for hardware in carousel_item3 %}
+            <div class="carousel-item">
+                <img src="{{hardware.article_image.url}}" class="d-block w-100" alt="...">
+                <div class="carousel-caption1 d-none d-md-block">
+                    <h5>{{hardware.title}}</h5>
+                    <p>{{hardware.created_date}} Tarihinde Yayımlandı</p>
+                    <form>
+                        {% csrf_token %}
+                        <input type="submit" name="keyword_category" value="Donanım">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% for crypto in carousel_item4 %}
+            <div class="carousel-item">
+                <img src="{{crypto.article_image.url}}" class="d-block w-100" alt="...">
+                <div class="carousel-caption1 d-none d-md-block">
+                    <h5>{{crypto.title}}</h5>
+                    <p>{{crypto.created_date}} Tarihinde Yayımlandı</p>
+                    <form>
+                        {% csrf_token %}
+                        <input type="submit" name="keyword_category" value="Kripto Para">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- carousel end -->
+
+    <!-- content start -->
+
+    <div class="row content">
+        <!-- latest contents start -->
+
+        <div class="col-lg-8 latest">
+            <h3 style="color: #ff914d; margin-bottom: 50px;">En son Eklenenler</h3>
+            {% for article in articles %}
+            <!-- ********** -->
+            <div class="row mb-5">
+                <img class="col-md-4" href="{% url 'article:detail' article.id %}" src="{{article.article_image.url}}"
+                    alt="contentImg">
+                <div class="col-md-8 column">
+                    <h4><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></h4>
+                    <time>{{article.created_date|timesince}} önce yayımlandı</time>
+                    <p>{{article.content|safe|truncatewords:20}}</p>
+                    <cite>{{article.author.fullName}}</cite>
+                </div>
+            </div>
+            <!-- ---------- -->
+            {% endfor %}
+        </div>
+
+        <!-- latest contents end-->
+
+        <!-- most liked contents start -->
+
+
+        <div class="col-lg-4 d-none d-lg-block">
+            <h3 style="color: #ff914d;  margin-bottom: 50px;">Beğenecekleriniz</h3>
+            {% for trend in trends %}
+            <div class="flex-row d-flex" style="width: 350px; margin-left: auto; margin-bottom: 20px">
+                <img class=" rounded-circle " src="{{trend.article_image.url}}" alt="avatar">
+                <div class="column">
+                    <h4><a href="#">{{trend.title}}</a></h4>
+                    <time>{{trend.created_date|timesince}} önce yayımlandı</time>
+                    <p>{{trend.content|safe|truncatewords:20}}</p>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+        <!-- most liked contents end -->
+
+
+    </div>
+    <!-- content end -->
+
+
+    <!-- container main end -->
+</main>
+
+
+
+
+{% endblock body %}

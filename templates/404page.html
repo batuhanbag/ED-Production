@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block body %}
+
+<style>
+    .background {
+        background: url("{% static 'image/akdeniz.jpg' %}") no-repeat center center fixed #000;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        pointer-events: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+
+    }
+</style>
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/404.css' %}">
+
+<div class="container">
+
+
+    <div class="wrapError">
+        <h1 class="ErrorHeader">
+            404
+        </h1>
+        <p class="ErrorMessage">
+            Aradığınız Sayfa Bulunamadı.
+        </p>
+    </div>
+
+
+    <div class="background">
+        <!-- <img src="../images/akdeniz.jpg" alt=""> -->
+
+    </div>
+
+</div>
+
+
+{% endblock body %}

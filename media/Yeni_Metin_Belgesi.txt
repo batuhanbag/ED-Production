@@ -1,0 +1,56 @@
+bir yeti nasıl edinilir onda nasıl gelişebiliriz ? 
+
+bilgi ile yeti farklı şeylerdir 
+
+olgu bir coğrafyadır
+bilgi ise bir harita 
+harita bize oradaki işe yarayacak verileri verir 
+biz o verileri ve işe yarar şeyleri kullanarak yaptığımız ortaya cıkardıgımız
+yani bizi a noktasından b noktasına bilgi aracılığıyla taşıyan unsur tamamen yeti'dir
+yeti kısaca tamamen bilgi ile problem cozme becerisidir
+
+
+akedemik ogrenme
+
+proje bazlı ogrenme
+
+sosyalleşerek ogrenme
+
+
+
+akdemik-
+
+muhendıslık kod gorgusu 
+
+clean code
+
+design patterns
+
+refactoring
+
+proje-
+
+kesinlikle bitirilmiş proje olmalı
+
+a ve b noktaları yakın seçilmeli
+
+sosyalleşmek-
+
+meetup
+
+ınsanlarla tanısmak
+
+
+
+Gelişme-
+
+matematık gelıstırmek
+
+sureklı proje yapmak
+
+zaaflarınla barışık ol ego yapmadan gıt bırdaha ogren
+
+daha once gıtmedıgımız b noktalarına gıtmek
+
+
+

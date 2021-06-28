@@ -1,0 +1,66 @@
+flexDirection:
+
+row, column, row-reverse, column-reverse
+
+sayfayı konumlandırmamızı saglar şablonları olustururuz semantıcleri	
+bu baya onemlı bunlara bak batu!!!!
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+justifyContent
+
+justifyContent bıze x eksenınde yanı yatay eksende işlemler yapmamızı saglar 
+
+5 elemandan olusur
+
+flex-start, flex-end , center, space-between, space-around
+
+flex-start:
+elemanı normal bir şekilde soldan başlatır
+
+flex-end:
+elemanı sondan yanı sag tarftan başlatır
+
+center: 
+elemanı ortalar
+
+space-between:
+
+iki tane elemanı sag ve sola koyar ve ilk elemanı sola ıkıncı elemanı saga sekılınde aralarında bır bosluk bırakır
+
+space-around: 
+
+iki elamanı between gıbı sag sola yerlestırır fakat ıkısınıde soldan ıteleyerek ortada bosluk olucak sekılde bırlestırır.
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+flexWrap:
+
+bizim sayfaya sıgmayan elemanlar hakkında ıslem yapmamızı saglar 
+
+2 elemandan olusur:
+
+nowrap : nowrap sıgmayan ıslemlere bırşey yapmaz devam eder
+
+wrap: wrap ıse sıgmayan yerlerı row şeklinde ise hemen altına sıralanmasını saglar column seklınde ıse yanına sıralanamsına olanak verir.
+
+---------------------------------------------------------------------------------------------------------------------
+alingItems:
+
+alingItems bize y eksenınde yani dikey eksende işlemler yapmamıza olanak verir. justifyContent ile arasındakı fark budur.
+
+digerleridnen ayrı strectch vardır buda bize elemanları column durumunda ıse alt alta row durumunda ıse yan yana ıslem yapmasını saglar sıgdırarak.
+
+
+
+
+React-native yaşam donguleri
+-----
+
+
+

@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+
+
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+
+<style>
+    .deleteuserWrapper {
+        width: 35%;
+        margin: 50px auto;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: rgb(224, 224, 224);
+
+    }
+</style>
+
+
+<div class="container mb-5 " style="height: 70vh;">
+
+    <div class="deleteuserWrapper">
+
+        <h3 style="color: red; font-weight: bold;">DİKKAT! HESABINIZI SİLMEK ÜZERESİNİZ</h3>
+        <P>Hesabınızı silmek için şifrenizi onaylayınız</P>
+
+        <div style="display: flex; align-items: center;">
+            {% if messages %}
+
+            {% for message in messages %}
+            {% if message.tags == "info" %}
+            <div style="height: 30px; padding: 0 1.25rem;" class="alert alert-danger">{{ message }}</div>
+            {% else %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+            {% endif %}
+
+
+            {% endfor %}
+
+            {% endif %}
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form">
+
+                <div style="display: flex; align-items: center;">
+                    <label style="font-weight: bold; margin-right: 25px;" for="pass">ŞİFRE</label>
+                    <input id="pass" type="password" name="password" placeholder="Şifrenizi giriniz">
+                </div>
+
+                <button type="submit" class="btn right" onclick="showMessage()">Sil</button>
+
+            </div>
+        </form>
+    </div>
+
+
+
+</div>
+<!-- content end -->
+
+
+
+
+<script src="{% static 'js/Transition.js' %}"></script>
+<script>
+
+    function showMessage() {
+        alert(" Hesabınızın silinme işlemini tamamlamak istiyorsanız 'Tamam' butonuna tıklayınız. ");
+    }
+</script>
+{% endblock body %}

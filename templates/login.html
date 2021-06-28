@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+
+
+<div class="container">
+  <div class="profilePage">
+
+    <h5 style="text-align: center; font-weight: bold;">GİRİŞ YAP</h5>
+
+    <div>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form">
+          <input required type="email" name="email" placeholder="E-posta adresi">
+          <input required type="password" name="password" placeholder="Şifre giriniz">
+
+          <div style="display: flex; justify-content: space-between;">
+
+            <label class="check">
+              <p> Beni Hatırla</p>
+              <input type="checkbox" value="lsRememberMe" id="rememberMe" />
+              <span class="checkbox"></span>
+            </label>
+            <a class="forget" href="{% url 'password_reset' %}">Şifremi Unuttum!</a>
+          </div>
+
+        </div>
+        <div style="display: flex; align-items:baseline">
+          <div>
+            {% for field in login_form %}
+            <p>
+              {% for error in field.errors %}
+            <p style="color: rgb(255, 145, 0)">{{ error }}</p>
+            {% endfor %}
+            </p>
+            {% endfor %}
+            {% if login_form.non_field_errors %}
+            <div style="color: rgb(255, 145, 0)">
+              <p>{{login_form.non_field_errors}}</p>
+            </div>
+
+            {% endif %}
+          </div>
+          <input type="submit" onclick="lsRememberMe()" value="Giriş Yap" class="btn right">
+        </div>
+      </form>
+      <div class="contentFooter">
+
+        <p>Hesabın Yok Mu? <a href="{% url 'account:register' %}">Kaydol</a></p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const rmCheck = document.getElementById("rememberMe"),
+    emailInput = document.getElementById("email");
+
+
+
+  if (localStorage.checkbox && localStorage.checkbox !== "") {
+    rmCheck.setAttribute("checked", "checked");
+    emailInput.value = localStorage.username;
+  } else {
+    rmCheck.removeAttribute("checked");
+    emailInput.value = "";
+  }
+
+  function lsRememberMe() {
+
+    if (rmCheck.checked && emailInput.value !== "") {
+
+      localStorage.username = emailInput.value;
+      localStorage.checkbox = rmCheck.value;
+    } else {
+
+      localStorage.username = "";
+      localStorage.checkbox = "";
+    }
+  }
+</script>
+{% endblock body %}

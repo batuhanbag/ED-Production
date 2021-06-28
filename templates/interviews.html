@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+<link rel="stylesheet" href="{% static 'css/socialMedia.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+<div class="container mb-5 ">
+    <h3 style="color: #ff914d; margin: 50px 0; text-align: center ;">Röportajlar</h3>
+    <div class="row ">
+        <div class="newsWrapper  col-md-9">
+            {% for interviews in interviews %}
+            <div class="flexItem">
+                <div class="newsItem">
+                    <img style="width: 100%" height="250px" src="{{interviews.interviews_image.url}}" alt="news">
+
+                    <h4 style=" margin-top: 15px;"><a
+                            href="{% url 'interviews:detail' interviews.id %}">{{interviews.title}}</a></h4>
+                    <div class="newsHeader">
+                        <time>{{interviews.created_date}}</time>
+                        <span class="newsLike">
+                            <span style="font-size: 12px; ;" class="material-icons">
+                                thumb_up
+                            </span>
+                            <p>{{ interviews.total_likes }}</p>
+
+                        </span>
+                        <p class="author">{{interviews.author.fullName}}</p>
+                    </div>
+
+                    <p>{{interviews.interviews_content|safe|truncatewords:20}}</p>
+                    <a type="button" href="{% url 'interviews:detail' interviews.id %}" class="btn right">Devamı Oku</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-3 socialMedia">
+            <h5 style="color: #ff914d;">Bizi Takip Et</h5>
+            <div class="socialmediaButtons">
+                <a href="">
+                    <button class="twitter">
+                        <i style="color: white;" class="fab fa-twitter"></i>
+                        Twitter
+                    </button>
+                </a>
+                <a href="">
+                    <button class="instagram">
+                        <i style="color: white;" class="fab fa-instagram"></i>
+                        İnstagram
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

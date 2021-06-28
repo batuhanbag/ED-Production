@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<div class="container" style="padding-top: 155px;">
+    <div style="margin: 0 auto ; width: 50%; height: 40%">
+        <div class="d-flex flex-column">
+            <p class="m-auto p-2">
+                E-posta adresinize bir aktivasyon postası gönderdik, "Hesabımı Onayla" butonuna tıklayarak veya altta
+                bulunan alternatif linki tarayıcına yapıştırıp kaydını
+                tamamlıyabilirsin.
+            </p>
+            <p class="m-auto p-2">
+                İyi okumalar dileriz
+            </p>
+            <p class="m-auto p-2" style="font-weight: 700;">
+                Akdeniz Bilişim Dergi
+            </p>
+
+
+            <a class="m-auto p-2 btn right mt-3" href="{% url 'index' %}">Anasayfaya Dön</a>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock body %}

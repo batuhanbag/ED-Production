@@ -1,0 +1,222 @@
+{% extends "layout.html" %} {% load static %} {% block body %}
+
+<link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+<link rel="stylesheet" href="{% static 'css/socialMedia.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ContentDetail.css' %}" />
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+
+<div class="container mb-5">
+    <div class="row">
+        <!-- Content -->
+        <section class="col-md-9" id="left">
+            <article class="contents">
+                <div class="contentHeader">
+                    <h3>{{news.title}}</h3>
+
+                    <time>{{news.created_date}}</time>
+                    <p>{{news.author.fullName}}</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-1 hideLeftLike">
+                        <div class="contentLike leftContentLike">
+                            <form method="POST" id="like">
+                                {% csrf_token %}
+                                <button style="cursor: pointer" id="likeButton" type="submit" name="post_id"
+                                    value="{{news.id}}">
+                                    <i id="icon" class="far fa-thumbs-up fa-lg"></i>
+                                </button>
+                            </form>
+                            <form method="POST" id="favourite">
+                                <button type="submit">
+                                    <i class="far fa-bookmark fa-lg" id="favourite_icon"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="article col-md-11">
+                        <div class="my-3" style="width: 100%">
+                            <img width="100%" height="400px" src="{{news.news_image.url}}" />
+                        </div>
+
+                        <p>{{news.content|safe}}</p>
+
+
+                        <p style="margin-top: 5%">
+                            Bu röportaj {{ news.read }} defa görüntülenmiştir.
+                        </p>
+
+                        <div class="contentBottom">
+                            <div class="contentInteraction">
+                                <div class="contentLike hideContentLike">
+                                    <form id="like">
+                                        {% csrf_token %}
+                                        <button style="cursor: pointer" id="likeButton" type="submit" name="post_id"
+                                            value="{{news.id}}">
+                                            <i id="icon" class="far fa-thumbs-up fa-lg"></i>
+                                        </button>
+                                    </form>
+                                    <form method="POST" id="favourite">
+                                        <button type="submit">
+                                            <i class="far fa-bookmark fa-lg" id="favourite_icon"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div>
+                                <a href="#">
+                                    <button class="linkedin">
+                                        <i style="color: white" class="fab fa-linkedin-in"></i>
+                                    </button>
+                                </a>
+                                <a href="#">
+                                    <button class="facebook">
+                                        <i style="color: white" class="fab fa-facebook-f"></i>
+                                    </button>
+                                </a>
+                                <a href="#">
+                                    <button class="whatsapp">
+                                        <i style="color: white" class="fab fa-whatsapp"></i>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="commentForce">
+                            {% if request.user.is_authenticated %}
+                            <h5>Yorum yaz</h5>
+
+                            {% else %}
+                            <p>
+                                yorum yapmak için
+                                <a href="{% url 'account:login' %}">giriş</a> yapmalısınız
+                            </p>
+                            {% endif %}
+                        </div>
+
+                        {% if request.user.is_authenticated %}
+                        <form class="writeCommentwrap" action="{% url 'news:comment'  news.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="writeComment">
+                                <textarea name="comment_content" placeholder="Yorum Yaz..." cols="103"
+                                    rows="5"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn right">Yorum Yap</button>
+                        </form>
+                        {% endif %} {% if comments %} {% for comment in comments %}
+                        <div class="commentsPart">
+                            {% if comment.comment_photo %}
+                            <img src="{{comment.comment_photo}}" alt="avatar" />
+                            {% else %}
+                            <img src="{% static 'image/akdenız_logo.png' %}" alt="avatar" />
+                            {% endif %}
+                            <div class="commentsPartright">
+                                <div>
+                                    <h6>{{comment.comment_author}}</h6>
+                                    <time> {{comment.comment_date}} </time>
+                                </div>
+                                <p>{{comment.comment_content}}</p>
+                            </div>
+                        </div>
+                        {% endfor %} {% else %}
+
+                        <div class="commentsPart">
+                            <div class="commentsPartright">
+                                <div style="margin-top: 3%">
+                                    Bu röportaja yorum yapılmamıştır.İlk yorumu yapan siz olun!
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- side start -->
+        <section class="col-md-3" id="right">
+            <div>
+                <h5 style="color: #ff914d">Bizi Takip Et</h5>
+                <div class="socialmediaButtons">
+                    <a href="https://twitter.com/btakdenizuni" target="_blank">
+                        <button class="twitter">
+                            <i style="color: white" class="fab fa-twitter"></i>
+                            Twitter
+                        </button>
+                    </a>
+                    <a href="https://www.instagram.com/btakdenizuni/" target="_blank">
+                        <button class="instagram">
+                            <i style="color: white" class="fab fa-instagram"></i>
+                            İnstagram
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <h5 style="color: #ff914d; font-weight: bold">Beğenebilecekleriniz</h5>
+            {% for side in sideNews %}
+            <div>
+                <a class="contentRight" href="{% url 'news:detail' side.id %}">
+                    <img src="{{side.news_image.url}}" alt="content" style="border-radius: 30px; margin-bottom: 5%" />
+                    <h6>{{ side.title }}</h6>
+                </a>
+            </div>
+            {% endfor %}
+        </section>
+    </div>
+</div>
+<!-- footer start -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(document).on("submit", "#like", function (e) {
+        console.log($("input[name=csrfmiddlewaretoken]").val());
+        e.preventDefault();
+
+        $.post(
+            '{% url "news:like_post" news.id  %}',
+            {
+                post_id: $("#likeButton").val(),
+                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+            },
+            function (data, success) {
+                const id = document.getElementById("icon");
+                if (id.classList.contains("fas")) {
+                    id.classList.remove("fas");
+                    id.classList.toggle("far");
+                } else if (id.classList.contains("far")) {
+                    id.classList.toggle("fas");
+                    id.classList.remove("far");
+                }
+            }
+        );
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).on("submit", "#favourite", function (e) {
+        e.preventDefault();
+
+        $.post(
+            "{% url 'news:favourite_post' news.id %}",
+            {
+                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+            },
+            function (data, success) {
+                console.log("success");
+                const id = document.getElementById("favourite_icon");
+                if (id.classList.contains("fas")) {
+                    id.classList.remove("fas");
+                    id.classList.toggle("far");
+                } else if (id.classList.contains("far")) {
+                    id.classList.toggle("fas");
+                    id.classList.remove("far");
+                }
+            }
+        );
+    });
+</script>
+
+{% endblock body %}

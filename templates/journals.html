@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/journals.css' %}">
+<link rel="stylesheet" href="{% static 'css/socialMedia.css' %}">
+
+
+<div class="container mb-5 ">
+    <h3 class=" col-md-9" style="color: #ff914d; margin: 50px 0; text-align: center ;">Dergiler</h3>
+    <div class="row">
+        <div class="newsWrapper  col-md-9">
+            {% for journal in journals %}
+            <div class="flexItem">
+                <img src="{{journal.journals_image.url}}" alt="journal">
+                <div class="journalHeader">
+                    <a href="" download="{{journal.journals_file}}" style="color:white" value>
+                        <p>{{journal.title}}</p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-3 socialMedia">
+            <h5 style="color: #ff914d;">Bizi Takip Et</h5>
+            <div class="socialmediaButtons">
+                <a href="">
+                    <button class="twitter">
+                        <i style="color: white;" class="fab fa-twitter"></i>
+                        Twitter
+                    </button>
+                </a>
+                <a href="">
+                    <button class="instagram">
+                        <i style="color: white;" class="fab fa-instagram"></i>
+                        İnstagram
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

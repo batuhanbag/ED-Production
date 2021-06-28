@@ -1,0 +1,58 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(224, 224, 224);
+}
+.profilePage {
+  width: 40%;
+  height: 80vh;
+  margin: 40px auto;
+}
+.profileTop {
+  display: flex;
+  margin-bottom: 20px;
+}
+.crop {
+  left: 130px;
+  top: 150px;
+  position: absolute;
+  max-width: 300px;
+  background-color: rgba(214, 210, 210, 0.616);
+  padding-bottom: 12px;
+  padding-right: 12px;
+}
+.cr-boundary {
+  background-color: rgb(255, 255, 255);
+}
+.cr-slider-wrap {
+  display: none !important;
+}
+#ppimage {
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.profileTop div {
+  display: flex;
+  flex-direction: column;
+}
+.profileTop div p {
+  color: #ff914d;
+}
+.profileTop div p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.profileTop a {
+  color: #ff914d;
+  text-decoration: none;
+}
+.profileTop a:hover {
+  text-decoration: underline;
+}
+.profileBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.profileBottom a {
+  color: #dc3545;
+}

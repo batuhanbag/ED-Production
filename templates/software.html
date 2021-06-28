@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+<link rel="stylesheet" href="{% static 'css/essay.css' %}">
+<div class="container mb-5 ">
+  <h3 style="color: #ff914d; margin: 50px 0; text-align: center ;">Makeleler</h3>
+  
+      
+
+    
+  </div>
+</div>
+{% if cat_articles %}
+
+{% for article in cat_articles %}
+<!-- content start -->
+    <div class="newsWrapper  col-md-9">
+        
+          <div class="flexItem">
+              <div class="newsItem">
+                <a href="{% url 'article:detail' article.id %}"><img src="{{article.article_image.url}}" alt="news"></a>
+
+                  <div class="newsHeader">
+                      <h4><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></h4>
+                      <time>{{article.created_date}}</time>
+                      <span class="newsLike">
+                          <span style="font-size: 12px; ;" class="material-icons">
+                              thumb_up
+                          </span>
+                          <p>{{ article.total_likes }}</p>
+                          
+                          <p>{{ article.count }}</p>
+                      </span>
+                      <p class="author"> {{article.author.fullName}}</p>
+                  </div>
+
+                  <p>{{article.content|safe|truncatewords:20}}</p>
+                  <a type="button" href="{% url 'article:detail' article.id %}" class="btn right">Devamı Oku</a>
+              </div>
+          </div>
+        </div>
+
+  
+    
+<!-- content end -->
+
+
+{% endfor %}
+
+
+{% else %}
+<div class ="row">
+    
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+<div class = "alert alert-danger">
+   Makale Bulunamadı
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+
+
+  <!-- footer start -->
+  <footer>
+    <div class="outer">
+        <!--   <div class="bottom">
+        <a href="#">Hakkımızda</a>
+        <a href="#">İletişim</a>
+    </div> -->
+        <small>Akdeniz Üniversitesi Bilgisyar Topluluğu Tarafından Hazırlanmıştır</small>
+    </div>
+</footer>
+
+
+{% endblock body %}

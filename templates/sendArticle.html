@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'css/sendEssay.css' %}" />
+<link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<link rel="stylesheet" href="cropie/croppie.css">
+
+<!-- display modal to warn user start -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-warning" id="staticBackdropLabel">UYARI!</h5>
+
+      </div>
+      <div class="modal-body">
+        Makale gönderebilmek için <a class="sendEssayLogin" href="">
+          giriş</a> yapmalısınız
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" data-bs-dismiss="modal" class="btn right">Anladım</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- display modal to warn user end -->
+<!-- content start -->
+
+<div class="container">
+  <div class="sendEssayPage">
+    <h1 style="font-weight: bold;
+            margin-top: 50px;">Yeni İçerik Oluştururken Dikkat Edilmesi Gereken Kurallar</h1>
+    <h2>İçerik Yazımı</h2>
+    <p>
+      İçerik oluştururken metinleri tek bir kural çerçevesi dahilinde yazmalısınız.
+      Sayfanızdaki tüm yazı tipi Times New Roman olmalıdır.
+      Başlıklar 18 punto büyüklükte, metinler 14 punto büyüklükte olmalıdır.
+      Paragraf başlangıçlarında klavyenizdeki Tab tuşu ile boşluk bırakmanız gereklidir.
+    </p>
+    <h4>Örnek</h4>
+    <img style="margin: 15px 0; width: 50%;" src="{% static 'assests/yaziornek.jpg' %}" alt="yaziornek">
+    <h2>Fotoğraf Seçimi </h2>
+    <p>Oluşturmuş olduğunuz içeriğe en uygun bir adet fotoğraf seçmelisiniz. Fotoğrafın boyutları 16:9
+      formatında ve
+      en fazla 1280x720 piksel büyüklükte olmalıdır. Dosya boyutunun da 1,5 mb boyutu geçmemesine özen
+      gösterin.
+
+    </p>
+    <h4>Örnek</h4>
+    <img style="margin: 15px 0; width: 50%;" src="{% static 'assests/ornek.jpg' %}" alt="ornek">
+    <img style="margin: 15px 0; " src="{% static 'assests/fotokisit.jpg' %}" alt="imageProperties">
+
+
+  </div>
+</div>
+
+<!-- content end -->
+<div class="sendSection">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form">
+      <div class="sendEssayInput">
+        <label for="subject"> Mesaj</label>
+        <textarea class="form-control" rows="5" style="resize: none;" name="message" id="comment"></textarea>
+      </div>
+      <div class="sendEssayInput">
+        <label for="docId">
+          Dosya yükle
+        </label>
+        <input id="docId" required type="file" accept=".doc,.docx" name="essay" style="display: none">
+        <button type="button" class="uploadFilebtn" onclick="uploadDoc()">yükle</button>
+        <small id="fileName">
+
+        </small>
+      </div>
+
+
+      <div class="accType sendEssaycheck">
+        <label class="check">
+          <p> Makale</p>
+          <input name="accType" value="Makale" type="radio" />
+          <span class="checkbox"></span>
+        </label>
+        <label class="check">
+          <p> Röportaj</p>
+          <input name="accType" value="Röportaj" type="radio" />
+          <span class="checkbox"></span>
+        </label>
+        <label class="check">
+          <p> Haber</p>
+          <input name="accType" value="Haber" type="radio" />
+          <span class="checkbox"></span>
+        </label>
+        <label class="check">
+          <p> Diğer</p>
+          <input name="accType" value="Diğer" type="radio" />
+          <span class="checkbox"></span>
+        </label>
+      </div>
+
+
+
+      <button type="submit" class="btn right">Gönder</button>
+    </div>
+  </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script src="{% static 'js/Transition.js' %}"> </script>
+<script>
+  /* display warning when send essay page is loaded */
+  $(document).ready(function () {
+    console.log(
+      $("#staticBackdrop"))
+    $("#staticBackdrop").modal('show');
+  });
+</script>
+{% endblock body %}

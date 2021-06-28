@@ -1,0 +1,31 @@
+.essayRight {
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 35px;
+  margin-bottom: auto;
+  padding: 15px;
+  line-height: 35px;
+}
+
+.essayRight h5 {
+  text-align: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+}
+
+.essayRight ul li input {
+  background-color: transparent;
+  color: black;
+  border: 0;
+}
+
+.essayRight ul li input:hover {
+  text-decoration: underline;
+  color: #ff914d;
+}
+
+@media (max-width: 992px) {
+  .essayRight ul li input {
+    font-size: 12px;
+  }
+}

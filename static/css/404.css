@@ -1,0 +1,23 @@
+.wrapError {
+  display: flex;
+  flex-direction: column;
+  margin: 66.5px auto 0px auto;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 82vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding-top: 150px;
+}
+.wrapError img {
+  width: 100%;
+  height: 100%;
+}
+.ErrorHeader {
+  color: #ff914d;
+  font-size: 150px;
+}
