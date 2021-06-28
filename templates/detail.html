@@ -48,16 +48,16 @@
                         <div class="contentBottom">
                             <div class="contentInteraction">
                                 <div class="contentLike hideContentLike">
-                                    <form id="like">
+                                    <form method="POST" id="like">
                                         {% csrf_token %}
                                         <button style="cursor: pointer" id="likeButton" type="submit" name="post_id"
                                             value="{{article.id}}">
-                                            <i id="icon" class="far fa-thumbs-up fa-lg"></i>
+                                            <i id="icon1" class="far fa-thumbs-up fa-lg"></i>
                                         </button>
                                     </form>
                                     <form method="POST" id="favourite">
                                         <button type="submit">
-                                            <i class="far fa-bookmark fa-lg" id="favourite_icon"></i>
+                                            <i class="far fa-bookmark fa-lg" id="favourite_icon1"></i>
                                         </button>
                                     </form>
                                 </div>
@@ -184,12 +184,17 @@
             },
             function (data, success) {
                 const id = document.getElementById("icon");
+                const id1 = document.getElementById("icon1");
                 if (id.classList.contains("fas")) {
                     id.classList.remove("fas");
                     id.classList.toggle("far");
+                    id1.classList.remove("fas");
+                    id1.classList.toggle("far");
                 } else if (id.classList.contains("far")) {
                     id.classList.toggle("fas");
                     id.classList.remove("far");
+                    id1.classList.toggle("fas");
+                    id1.classList.remove("far");
                 }
             }
         );
@@ -208,12 +213,17 @@
             function (data, success) {
                 console.log("success");
                 const id = document.getElementById("favourite_icon");
+                const id1 = document.getElementById("favourite_icon1");
                 if (id.classList.contains("fas")) {
                     id.classList.remove("fas");
                     id.classList.toggle("far");
+                    id1.classList.remove("fas");
+                    id1.classList.toggle("far");
                 } else if (id.classList.contains("far")) {
                     id.classList.toggle("fas");
                     id.classList.remove("far");
+                    id1.classList.toggle("fas");
+                    id1.classList.remove("far");
                 }
             }
         );
