@@ -107,7 +107,7 @@
                         {% endif %} {% if comments %} {% for comment in comments %}
                         <div class="commentsPart">
                             {% if comment.comment_photo %}
-                            <img src="{{comment.comment_photo}}" alt="avatar" />
+                            <img src="{{comment.comment_photo.url}}" alt="avatar" />
                             {% else %}
                             <img src="{% static 'image/akdenız_logo.png' %}" alt="avatar" />
                             {% endif %}
@@ -137,7 +137,7 @@
         <!-- side start -->
         <section class="col-md-3" id="right">
             <div>
-                <h5 style="color: #ff914d">Bizi Takip Et</h5>
+                <h5 style="color: #ff914d; font-weight:bold">Bizi Takip Et</h5>
                 <div class="socialmediaButtons">
                     <a href="https://twitter.com/btakdenizuni" target="_blank">
                         <button class="twitter">
@@ -156,10 +156,11 @@
             <h5 style="color: #ff914d; font-weight: bold">Beğenebilecekleriniz</h5>
             {% for side in sideArticle %}
             <div>
-                <a class="contentRight" href="{% url 'article:detail' side.id %}">
+                <a class="contentRight" style="text-decoration-color: #ff914d;"
+                    href="{% url 'article:detail' side.id %}">
                     <img src="{{side.article_image.url}}" alt="content"
                         style="border-radius: 30px; margin-bottom: 5%" />
-                    <h6>{{ side.title }}</h6>
+                    <h6 style="color: #ff914d; font-weight:bold">{{ side.title }}</h6>
                 </a>
             </div>
             {% endfor %}

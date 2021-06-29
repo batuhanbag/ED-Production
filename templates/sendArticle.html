@@ -65,6 +65,12 @@
     {% csrf_token %}
     <div class="form">
       <div class="sendEssayInput">
+        <label for="subject">İsiminiz</label>
+        <input type="text" class="form-control" name="name">
+      </div>
+
+      <div class="sendEssayInput">
+
         <label for="subject"> Mesaj</label>
         <textarea class="form-control" rows="5" style="resize: none;" name="message" id="comment"></textarea>
       </div>
@@ -72,9 +78,8 @@
         <label for="docId">
           Dosya yükle
         </label>
-        <input id="docId" required type="file" accept=".doc,.docx" name="essay" style="display: none">
-        <button type="button" class="uploadFilebtn" onclick="uploadDoc()">yükle</button>
-        <small id="fileName">
+
+        <input id="docId" type="file" accept=".doc,.docx" name="file">
 
         </small>
       </div>

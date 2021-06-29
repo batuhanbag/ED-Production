@@ -38,6 +38,9 @@ class News(models.Model):
 class Comment(models.Model):
     news = models.ForeignKey(
         News, on_delete=models.CASCADE, verbose_name="Haber", related_name="comments")
+
+    comment_photo = models.FileField(
+        blank=True, null=True, verbose_name="Yoruma Fotoğraf Ekleyin")
     comment_author = models.CharField(max_length=50, verbose_name="İsim")
     comment_content = models.CharField(max_length=256, verbose_name="Yorum")
     comment_date = models.DateTimeField(auto_now_add=True)

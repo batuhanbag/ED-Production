@@ -93,7 +93,7 @@ def addComment(request, id):
     if request.method == "POST":
         comment_author = request.user.fullName
         comment_content = request.POST.get("comment_content")
-        comment_photo = request.user.account_avatar.url
+        comment_photo = request.user.account_avatar
         newComment = Comment(comment_author=comment_author,
                              comment_content=comment_content,
                              comment_photo=comment_photo)

@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+
+<div class="container" style="padding: 250px">
+    <div class="d-flex flex-column">
+        <p class="m-auto">Aktivasyon İşleminde Hata Oluştu. Lütfen Tekrar Deneyiniz</p> <a
+            style="color:#ff914d ; text-align:center" href="{% url 'index' %}">Anasayfaya
+            Dön
+        </a>
+    </div>
+</div>
+
+{% endblock %}

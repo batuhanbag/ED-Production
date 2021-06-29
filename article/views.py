@@ -137,9 +137,11 @@ def addComment(request, id):
     if request.method == "POST":
         comment_author = request.user.fullName
         comment_content = request.POST.get("comment_content")
+        comment_photo = request.user.account_avatar
 
         newComment = Comment(comment_author=comment_author,
-                             comment_content=comment_content)
+                             comment_content=comment_content,
+                             comment_photo=comment_photo)
 
         newComment.article = article
 
@@ -201,9 +203,11 @@ def sendArticle(request):
     if keyword:
         articles = Article.objects.filter(title__contains=keyword)
         return render(request, "articles.html", {"articles": articles})
+
+    name = request.POST.get('name', '')
     post_type = request.POST.get('accType', '')
-    subject = "abc" + \
-        " Kullanıcısının Gönderisi, Gönderi Tipi : " + post_type
+    subject = name + \
+        " İsimli Kullanıcının Gönderisi, Gönderi Tipi : " + post_type
     message = request.POST.get('message', '')
 
     basemail = 'batuhannbagg@gmail.com'

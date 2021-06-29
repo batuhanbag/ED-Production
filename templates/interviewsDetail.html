@@ -39,13 +39,6 @@
 
             <p>{{interviews.interviews_content|safe}}</p>
 
-            {% if interviews.interviews_image2 %}
-            <div class="my-3" style="width: 100%">
-              <video style="width: 100%" height="450px" controls>
-                <source src="{{interviews.interviews_image2.url}}" type="video/mp4" />
-              </video>
-            </div>
-            {% endif %}
             <p style="margin-top: 5%">
               Bu röportaj {{ interviews.read }} defa görüntülenmiştir.
             </p>
@@ -111,7 +104,7 @@
             {% endif %} {% if comments %} {% for comment in comments %}
             <div class="commentsPart">
               {% if comment.comment_photo %}
-              <img src="{{comment.comment_photo}}" alt="avatar" />
+              <img src="{{comment.comment_photo.url}}" alt="avatar" />
               {% else %}
               <img src="{% static 'image/akdenız_logo.png' %}" alt="avatar" />
               {% endif %}
@@ -141,7 +134,7 @@
     <!-- side start -->
     <section class="col-md-3" id="right">
       <div>
-        <h5 style="color: #ff914d">Bizi Takip Et</h5>
+        <h5 style="color: #ff914d; font-weight:bold">Bizi Takip Et</h5>
         <div class="socialmediaButtons">
           <a href="https://twitter.com/btakdenizuni" target="_blank">
             <button class="twitter">
@@ -160,9 +153,9 @@
       <h5 style="color: #ff914d; font-weight: bold">Beğenebilecekleriniz</h5>
       {% for side in sideInterviews %}
       <div>
-        <a class="contentRight" href="{% url 'interviews:detail' side.id %}">
-          <img src="{{side.interviews_image.url}}" alt="content" style="border-radius: 30px; margin-bottom: 5%" />
-          <h6>{{ side.title }}</h6>
+        <a class="contentRight" style="text-decoration-color: #ff914d;" href="{% url 'interviews:detail' side.id %}">
+          <img src="{{side.interviews_image.url}}" alt="content" style="border-radius: 30px; margin-bottom: 5% ;" />
+          <h6 style="color :#ff914d; font-weight:bold">{{ side.title }}</h6>
         </a>
       </div>
       {% endfor %}

@@ -104,8 +104,8 @@
             {% for article in articles %}
             <!-- ********** -->
             <div class="row mb-5">
-                <img class="col-md-4" href="{% url 'article:detail' article.id %}" src="{{article.article_image.url}}"
-                    alt="contentImg">
+                <img class="col-md-4" style="height:155px ;" href="{% url 'article:detail' article.id %}"
+                    src="{{article.article_image.url}}" alt="contentImg">
                 <div class="col-md-8 column">
                     <h4><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></h4>
                     <time>{{article.created_date|timesince}} önce yayımlandı</time>

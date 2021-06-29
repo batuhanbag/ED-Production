@@ -44,7 +44,7 @@ def registration_view(request):
                     mail_subject, message, to=[to_email]
                 )
                 email.send()
-                return HttpResponse('Please confirm your email address to complete the registration')
+                return render(request, "registerINFO.html")
             else:
                 messages.info(
                     request, 'Lütfen edu.tr uzantılı bir e-posta giriniz.')
@@ -63,9 +63,9 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        return render(request, "registerOK.html")
     else:
-        return HttpResponse('Activation link is invalid!')
+        return render(request, "registerFAIL.html")
 # def registration_view(request):
 #     context = {}
 #     if request.POST:

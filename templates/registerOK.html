@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+<link rel="stylesheet" href="{% static 'css/registerOK.css' %}" />
+
+
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<div class="activation__wrapper">
+    <div class="activation__container">
+        <div class="activation__header"><img class="activation__logo" src="{% static 'image/LogoDergi.png' %}" /></div>
+        <br>
+        <br>
+
+        <div class="activation__arrow"></div>
+        <div class="activation__message">
+            <div><span class="activation__user">Hesabınız Aktive Edilmiştir İyi Okumalar Dileriz.</span>
+                <!--<Username>-->
+                <br />
+            </div>
+        </div>
+        <div class="activation__link">
+
+            <div href="{% url 'index'  %}" class="activation__btn">Ana Sayfaya Dön</div>
+        </div>
+        <div class="activation__footer">
+
+            Teşekkür Ederiz
+            <br /> Akdeniz Bilişim Dergisi
+            <br />
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
