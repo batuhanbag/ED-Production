@@ -11,7 +11,20 @@
 
 
 <!-- container main start -->
+{% if messages %}
 
+{% for message in messages %}
+{% if message.tags == "info" %}
+<div style="height: 30px; padding: 0 1.25rem;" class="alert alert-danger">{{ message }}</div>
+{% else %}
+<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+{% endif %}
+
+
+{% endfor %}
+
+{% endif %}
 <main class="container">
     <!-- carousel start  -->
     <div id="carouselExampleCaptions" class="carousel slide mt-5 " data-bs-ride="carousel">

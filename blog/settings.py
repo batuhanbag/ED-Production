@@ -25,6 +25,7 @@ SECRET_KEY = '&49ga4rqxrp)^w=%ed&s4qf0*)1yvl!$6j=e@b^^e=i-s3g+@+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 if DEBUG:
@@ -49,7 +50,8 @@ INSTALLED_APPS = [
     "news",
     "interviews",
     'django_email_verification',
-    'journals'
+    'journals',
+    'django_social_share'
 
 
 ]
@@ -87,8 +89,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'blog.wsgi.application'
 
 
-
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # One month
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # One month
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -153,8 +154,8 @@ CKEDITOR_CONFIGS = {
         "allowedContent": True,
         "width": "100%",
         "toolbar": "full",
-        "extraPlugins":"codesnippet",
-        "extraPlugins":"html5video"
+        "extraPlugins": "codesnippet",
+        "extraPlugins": "html5video"
     }
 }
 MEDIA_URL = '/media/'

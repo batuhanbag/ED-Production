@@ -19,8 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from account import views
+import article
 from news import views
 from article import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -56,3 +58,5 @@ urlpatterns = [
          name='password_reset_complete'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+handler404 = article.views.handler404
+handler500 = article.views.handler500

@@ -96,6 +96,10 @@ def detail(request, id):
 
     current_detail = article
 
+    url = "http://localhost:8000" + article.get_absolute_url()
+
+    print(url)
+
     week_ago = datetime.date.today() - datetime.timedelta(days=45)
 
     sideArticle = Article.objects.filter(created_date__gte=week_ago).order_by(
@@ -125,6 +129,7 @@ def detail(request, id):
         'total_likes': article.total_likes(),
         'is_favourite': is_favourite,
         'sideArticle': sideArticle,
+        'url': url
 
     }
     return render(request, "detail.html", context)
@@ -225,8 +230,21 @@ def sendArticle(request):
     else:
         file = request.FILES['file']
 
-    sendmail.attach(file.name, file.read(), file.content_type)
-    print(file, subject, message, post_type)
-    sendmail.send()
+    if request.user.is_authenticated == True:
 
-    return render(request, "sendArticle_OK.html")
+        sendmail.attach(file.name, file.read(), file.content_type)
+        print(file, subject, message, post_type)
+        sendmail.send()
+        return render(request, "sendArticle_OK.html")
+    else:
+        messages.info(
+            request, 'Lütfen işlemi gerçekleştirmek için giriş yapınız.')
+        return render(request, "sendArticle.html")
+
+
+def handler404(request):
+    return render(request, '404page.html', status=404)
+
+
+def handler500(request):
+    return render(request, '404page.html', status=500)

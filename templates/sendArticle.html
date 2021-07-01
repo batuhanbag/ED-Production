@@ -33,8 +33,23 @@
 
 <div class="container">
   <div class="sendEssayPage">
+    {% if messages %}
+
+    {% for message in messages %}
+    {% if message.tags == "info" %}
+    <div style="margin-top: 50px;" class="alert alert-danger">{{ message }}</div>
+    {% else %}
+    <div style="margin-top: 50px;" class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+    {% endif %}
+
+
+    {% endfor %}
+
+    {% endif %}
     <h1 style="font-weight: bold;
             margin-top: 50px;">Yeni İçerik Oluştururken Dikkat Edilmesi Gereken Kurallar</h1>
+
     <h2>İçerik Yazımı</h2>
     <p>
       İçerik oluştururken metinleri tek bir kural çerçevesi dahilinde yazmalısınız.
@@ -54,7 +69,10 @@
     <h4>Örnek</h4>
     <img style="margin: 15px 0; width: 50%;" src="{% static 'assests/ornek.jpg' %}" alt="ornek">
     <img style="margin: 15px 0; " src="{% static 'assests/fotokisit.jpg' %}" alt="imageProperties">
-
+    <h2>Göndermeden Önce Okuyunuz ! </h2>
+    <p>Gönderdiğiniz içerikte size ulaşabileceğimiz iletişim adreslerini bırakmanızı önemle rica ederiz. Aşşağıdaki
+      formumuzdan isiminizi ve isterseniz bize bırakmak istediğiniz bir mesajı, dosyanız ve dosyanızın tipini seçerek
+      yollayabilirsiniz. Göndereceğiniz yazının formatının doc veya docx olduğundan emin olmanızı rica ederiz.
 
   </div>
 </div>

@@ -1,5 +1,5 @@
 {% extends "layout.html" %} {% load static %} {% block body %}
-
+{% load social_share %}
 <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
 <link rel="stylesheet" href="{% static 'css/socialMedia.css' %}" />
 <link rel="stylesheet" href="{% static 'css/ContentDetail.css' %}" />
@@ -64,17 +64,20 @@
                             </div>
 
                             <div>
-                                <a href="#">
+
+                                <a href="https://www.linkedin.com/feed/" target="_blank">
+
                                     <button class="linkedin">
+
                                         <i style="color: white" class="fab fa-linkedin-in"></i>
                                     </button>
                                 </a>
-                                <a href="#">
+                                <a href="https://www.facebook.com/" target="_blank">
                                     <button class="facebook">
                                         <i style="color: white" class="fab fa-facebook-f"></i>
                                     </button>
                                 </a>
-                                <a href="#">
+                                <a href="whatsapp://send?text={{url}}">
                                     <button class="whatsapp">
                                         <i style="color: white" class="fab fa-whatsapp"></i>
                                     </button>

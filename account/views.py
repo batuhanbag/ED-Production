@@ -10,8 +10,10 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.http import HttpResponse
 from .tokens import account_activation_token
+from django.contrib.auth.hashers import check_password
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
 
 
 def registration_view(request):
@@ -48,9 +50,12 @@ def registration_view(request):
             else:
                 messages.info(
                     request, 'Lütfen edu.tr uzantılı bir e-posta giriniz.')
-
+        else:
+            messages.info(
+                request, 'Kayıt işlemi başarısız oldu, lütfen bilgilerinizi kontrol ediniz.')
     else:
         form = RegistrationForm()
+
     return render(request, 'register.html', {'form': form})
 
 
@@ -66,38 +71,6 @@ def activate(request, uidb64, token):
         return render(request, "registerOK.html")
     else:
         return render(request, "registerFAIL.html")
-# def registration_view(request):
-#     context = {}
-#     if request.POST:
-#         form = RegistrationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             email = form.cleaned_data.get('email')
-#             fullName = form.cleaned_data.get('fullName')
-#             raw_password = form.cleaned_data.get('password1')
-
-#             template = render_to_string("mail_body.html", {'name': fullName})
-#             sendmail = EmailMessage(
-
-#                 'Kaydını Tamamla!',
-#                 template,
-#                 settings.EMAIL_HOST_USER,
-#                 [email],
-#             )
-#             sendmail.content_subtype = "html"
-#             sendmail.fail_silenty = False
-#             sendmail.send()
-#             account = authenticate(email=email, password=raw_password)
-#             login(request, account)
-
-#             return redirect('index')
-#         else:
-#             context['registration_form'] = form
-
-#     else:
-#         form = RegistrationForm()
-#         context['registration_form'] = form
-#     return render(request, 'register.html', context)
 
 
 def logout_view(request):
@@ -185,11 +158,20 @@ def delete_user(request):
 
         user = request.user
 
-        user.delete()
+        # user.delete()
 
-        messages.info(request, 'Hesabınız Başarıyla Silinmiştir.')
+        password = request.user.password
 
-        return redirect('index')
+        deletePassword = request.POST.get("password")
+
+        if check_password(deletePassword, password) == True:
+
+            user.delete()
+            messages.success(request, 'Hesabınız Başarıyla Silinmiştir.')
+            return redirect("index")
+        else:
+
+            messages.info(request, 'Lütfen Şifrenizi Doğru Giriniz.')
 
     else:
 
